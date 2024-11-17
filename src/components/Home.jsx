@@ -11,9 +11,9 @@ function Home() {
 
   const category = decodeURIComponent(search.split("=")[1]);
 
-  console.log(category);
+  console.log(typeof category);
 
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(null);
 
   const getProductCategory = async () => {
     try {
@@ -26,8 +26,10 @@ function Home() {
   };
 
   useEffect(() => {
-    if (category) getProductCategory();
-  }, [category]);
+    if (!filteredProducts || category == "undefined")
+      setFilteredProducts(products);
+    if (category != "undefined") getProductCategory();
+  }, [category, products]);
   return products ? (
     <>
       <Nav />
