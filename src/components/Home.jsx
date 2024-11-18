@@ -11,18 +11,23 @@ function Home() {
 
   const category = decodeURIComponent(search.split("=")[1]);
 
-  console.log(typeof category);
+  // console.log(typeof category);
 
   const [filteredProducts, setFilteredProducts] = useState(null);
 
-  const getProductCategory = async () => {
-    try {
-      const { data } = await axios.get(`/products/category/${category}`);
+  // const getProductCategory = async () => {
+  //   try {
+  //     const { data } = await axios.get(`/products/category/${category}`);
 
-      setFilteredProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
+  //     setFilteredProducts(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  console.log(filteredProducts);
+
+  const getProductCategory = () => {
+    setFilteredProducts(products.filter((p) => p.category == category));
   };
 
   useEffect(() => {
@@ -34,20 +39,6 @@ function Home() {
     <>
       <Nav />
       <div className="w-[85%] h-full p-10 flex  flex-wrap gap-4 overflow-y-auto">
-        {/* <Link
-          to="/details/255"
-          className="card  h-[40vh] w-[18%] bg-slate-100 shadow-lg rounded-lg flex flex-col pt-5 items-center"
-        >
-          <div className="overflow-hidden  ">
-            <img
-              className="w-full h-full object-cover  hover:scale-110 "
-              src="https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
-              alt=""
-            />
-          </div>
-          <h2 className="text-xl font-semibold mt-4">Lorem ipsum dolor sit.</h2>
-        </Link> */}
-
         {filteredProducts &&
           filteredProducts.map((product) => {
             return (
