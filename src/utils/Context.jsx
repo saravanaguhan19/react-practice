@@ -8,18 +8,18 @@ const Context = (props) => {
     JSON.parse(localStorage.getItem("products") || null)
   );
 
-  // const getProducts = async () => {
-  //   try {
-  //     const { data } = await axios.get("/products");
-  //     setProducts(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // console.log(products);
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
+  const getProducts = async () => {
+    try {
+      const { data } = await axios.get("/products");
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(products);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <ProductContext.Provider value={[products, setProducts]}>

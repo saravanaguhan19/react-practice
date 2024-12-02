@@ -24,7 +24,7 @@ function Home() {
   //     console.log(error);
   //   }
   // };
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
 
   const getProductCategory = () => {
     setFilteredProducts(products.filter((p) => p.category == category));
